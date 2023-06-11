@@ -1,0 +1,14 @@
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/bin/Debug/netcoreapp3.1/ConnectFour
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/bin/Debug/netcoreapp3.1/ConnectFour.deps.json
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/bin/Debug/netcoreapp3.1/ConnectFour.runtimeconfig.json
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/bin/Debug/netcoreapp3.1/ConnectFour.runtimeconfig.dev.json
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/bin/Debug/netcoreapp3.1/ConnectFour.dll
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/bin/Debug/netcoreapp3.1/ConnectFour.pdb
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.csproj.AssemblyReference.cache
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.AssemblyInfoInputs.cache
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.AssemblyInfo.cs
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.csproj.CoreCompileInputs.cache
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.dll
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.pdb
+/Users/fmagbitang/Projects/Visual Studio/ConnectFour/ConnectFour/obj/Debug/netcoreapp3.1/ConnectFour.genruntimeconfig.cache
