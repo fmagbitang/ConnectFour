@@ -4,8 +4,8 @@ namespace ConnectFour
 {
     class ConnectFourPlayer
     {
-        public string Name { get; set; }
-        public string ID { get; set; }
+        public string Name { get; }
+        public string ID { get; }
 
         public ConnectFourPlayer(string name, string id)
         {
@@ -42,7 +42,36 @@ namespace ConnectFour
                 string id = (i == 0) ? "X" : "O";
                 _players[i] = new ConnectFourPlayer(name, id);
             }
-            Console.WriteLine(_players);
+            //Console.WriteLine(_players);
+
+            bool is_ended = false;
+
+            while (!is_ended)
+            {
+                Console.Clear();
+                GameBoard();
+
+                Console.WriteLine($"Player {_players[currentPlayersIndex].Name}\'s turn.");
+                Console.WriteLine("Enter number from ( 1 - 7 ) or \'R\' to restart: ");
+                string input = Console.ReadLine();
+
+            }
+        }
+
+        private void GameBoard()
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                Console.Write("|");
+                for (int j = 0; j < Column; j++)
+                {
+                    string id = (board[i, j] == 0) ? " . " : $" {_players[board[i, j] - 1].ID} ";
+                    Console.Write(id);
+                }
+                Console.Write("| \n");
+            }
+
+            Console.WriteLine();
         }
 
     }
