@@ -1,12 +1,7 @@
 ﻿<Properties StartupConfiguration="{BD099810-8504-4F15-A3BA-C324F1D143B0}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ConnectFour FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ConnectFour/Program.cs">
     <Files>
-      <File FileName="ConnectFour/Program.cs" Line="19" Column="1" />
+      <File FileName="ConnectFour/Program.cs" Line="50" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,6 +15,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ConnectFour PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
