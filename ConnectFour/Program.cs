@@ -5,18 +5,44 @@ namespace ConnectFour
     enum GameMode
     {
         TwoPlayer,
-        PlayerVsComputer
+        PlayerVsAI
     }
 
-    class Player
+    abstract class ConnectFourPlayer
     {
-        public string Name { get; }
-        public string ID { get; }
+        public string Name { get; protected set; }
+        public string ID { get; protected set; }
 
-        public Player(string name, string id)
+    }
+
+    class HumanPlayer : ConnectFourPlayer
+    {
+        public HumanPlayer(string name, string id)
         {
             Name = name;
             ID = id;
+        }
+
+    }
+
+    class AIPlayer
+    {
+        public static int GenerateMove(int[,] board)
+        {
+            Random random = new Random();
+            int column = random.Next(0, board.GetLength(1));
+
+            while (IsColumnFull(board, column))
+            {
+                column = random.Next(0, board.GetLength(1));
+            }
+
+            return column;
+        }
+
+        private static bool IsColumnFull(int[,] board, int column)
+        {
+            return board[0, column] != 0;
         }
     }
 
@@ -25,14 +51,14 @@ namespace ConnectFour
         private const int Rows = 6;
         private const int Columns = 7;
         private int[,] board;
-        private Player[] _players;
+        private ConnectFourPlayer[] _players;
         private int currentPlayerIndex;
         private GameMode gameMode;
 
         public ConnectFourGame()
         {
             board = new int[Rows, Columns];
-            _players = new Player[2];
+            _players = new ConnectFourPlayer[2];
             currentPlayerIndex = 0;
             gameMode = GameMode.TwoPlayer;
         }
@@ -47,22 +73,22 @@ namespace ConnectFour
                 Console.Write($"Enter Player {i + 1}'s name: ");
                 string name = Console.ReadLine();
                 string id = (i == 0) ? "X" : "O";
-                _players[i] = new Player(name, id);
+                _players[i] = new HumanPlayer(name, id);
             }
 
             Console.WriteLine();
             Console.WriteLine("Choose a game mode:");
             Console.WriteLine();
             Console.WriteLine("1. 2-Player Mode");
-            Console.WriteLine("2. User vs Computer Mode");
+            Console.WriteLine("2. User vs AI Mode");
             Console.WriteLine();
             Console.Write("Enter your choice (1 or 2): ");
             string modeChoice = Console.ReadLine();
 
             if (modeChoice == "2")
             {
-                gameMode = GameMode.PlayerVsComputer;
-                Console.WriteLine("You have chosen Player vs Computer Mode.");
+                gameMode = GameMode.PlayerVsAI;
+                Console.WriteLine("You have chosen Player vs AI Mode.");
             }
             else
             {
@@ -173,19 +199,19 @@ namespace ConnectFour
                         Console.ReadLine();
                     }
                 }
-                else if (gameMode == GameMode.PlayerVsComputer && currentPlayerIndex == 1)
+                else if (gameMode == GameMode.PlayerVsAI && currentPlayerIndex == 1)
                 {
-                    Console.WriteLine("Computer's turn...");
-                    int computerColumn = ComputerPlayer.GenerateMove(board);
-                    PlayMove(computerColumn);
+                    Console.WriteLine("AI Player's turn...");
+                    int aicomputerColumn = AIPlayer.GenerateMove(board);
 
-                    Console.Clear();
-                    GameBoard();
-                    Console.WriteLine("Computer has played.");
+                    Console.WriteLine("AI Player has played.");
 
-                    if (GameWinner(Rows - 1, computerColumn))
+                    if (PlayMove(aicomputerColumn))
                     {
-                        Console.WriteLine("Computer wins!");
+                        // restart the game and continue to play.
+                        Console.Clear();
+                        GameBoard();
+                        Console.WriteLine("AI Player wins!");
 
                         if (AskForRestart())
                         {
@@ -364,27 +390,6 @@ namespace ConnectFour
                     Console.WriteLine("Invalid input. Please try again.");
                 }
             }
-        }
-    }
-
-    class ComputerPlayer
-    {
-        public static int GenerateMove(int[,] board)
-        {
-            Random random = new Random();
-            int column = random.Next(0, board.GetLength(1));
-
-            while (IsColumnFull(board, column))
-            {
-                column = random.Next(0, board.GetLength(1));
-            }
-
-            return column;
-        }
-
-        private static bool IsColumnFull(int[,] board, int column)
-        {
-            return board[0, column] != 0;
         }
     }
 
