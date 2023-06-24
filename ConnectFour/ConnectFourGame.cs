@@ -62,18 +62,10 @@ namespace ConnectFour
 
             for (int i = 0; i < _players.Length; i++)
             {
-                string name;
-                if (i == 0)
-                {
-                    Console.Write($"Enter Player {i + 1}'s name: ");
-                    name = Console.ReadLine();
-                }
-                else
-                {
-                    // Generate a random name for Player 2 of AI
-                    name = GenerateRandomName();
-                }
+                Console.Write($"Enter Player {i + 1}'s name: ");
+                string name = (modeChoice == "2" && i == 1) ? GenerateRandomName() : Console.ReadLine();
                 string id = (i == 0) ? "X" : "O";
+
                 _players[i] = new HumanPlayer(name, id);
             }
 
