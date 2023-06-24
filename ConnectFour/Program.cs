@@ -30,6 +30,10 @@ namespace ConnectFour
         public static int GenerateMove(int[,] board)
         {
             Random random = new Random();
+
+            // Add a slight delay to simulate the AI's decision-making process
+            System.Threading.Thread.Sleep(1500);
+
             int column = random.Next(0, board.GetLength(1));
 
             while (IsColumnFull(board, column))
@@ -46,7 +50,12 @@ namespace ConnectFour
         }
     }
 
-    class ConnectFourGame
+    public interface IPlayGame
+    {
+        void StartGame();
+    }
+
+    public class ConnectFourGame : IPlayGame
     {
         private const int Rows = 6;
         private const int Columns = 7;
@@ -190,7 +199,8 @@ namespace ConnectFour
                         }
                         else
                         {
-                            currentPlayerIndex = (currentPlayerIndex + 1) % 2; // Switch player turns
+                            // Switch player turns
+                            currentPlayerIndex = (currentPlayerIndex + 1) % 2;
                         }
                     }
                     else
@@ -263,6 +273,7 @@ namespace ConnectFour
             }
 
             // looping to get if there is a player winner
+            Console.WriteLine(Rows - 1);
             for (int row = Rows - 1; row >= 0; row--)
             {
                 if (board[row, column] == 0)
