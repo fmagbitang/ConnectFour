@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConnectFour
 {
@@ -72,18 +73,25 @@ namespace ConnectFour
             gameMode = GameMode.TwoPlayer;
         }
 
+        private static string GenerateRandomName()
+        {
+            List<string> names = new List<string>()
+            {
+                "AI Player",
+                "Bot",
+                "Computer",
+                "RoboPlayer",
+                "Virtual Opponent"
+            };
+
+            Random random = new Random();
+            int index = random.Next(0, names.Count);
+            return names[index];
+        }
+
         public void StartGame()
         {
             Console.WriteLine("Welcome to Connect Four!");
-            Console.WriteLine();
-
-            for (int i = 0; i < _players.Length; i++)
-            {
-                Console.Write($"Enter Player {i + 1}'s name: ");
-                string name = Console.ReadLine();
-                string id = (i == 0) ? "X" : "O";
-                _players[i] = new HumanPlayer(name, id);
-            }
 
             Console.WriteLine();
             Console.WriteLine("Choose a game mode:");
@@ -93,7 +101,6 @@ namespace ConnectFour
             Console.WriteLine();
             Console.Write("Enter your choice (1 or 2): ");
             string modeChoice = Console.ReadLine();
-
             if (modeChoice == "2")
             {
                 gameMode = GameMode.PlayerVsAI;
@@ -102,6 +109,25 @@ namespace ConnectFour
             else
             {
                 Console.WriteLine("You have chosen 2-Player Mode.");
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < _players.Length; i++)
+            {
+                string name;
+                if (i == 0)
+                {
+                    Console.Write($"Enter Player {i + 1}'s name: ");
+                    name = Console.ReadLine();
+                }
+                else
+                {
+                    // Generate a random name for Player 2 of AI
+                    name = GenerateRandomName();
+                }
+                string id = (i == 0) ? "X" : "O";
+                _players[i] = new HumanPlayer(name, id);
             }
 
             bool is_ended = false;
@@ -211,10 +237,10 @@ namespace ConnectFour
                 }
                 else if (gameMode == GameMode.PlayerVsAI && currentPlayerIndex == 1)
                 {
-                    Console.WriteLine("AI Player's turn...");
+                    Console.WriteLine($"AI Player {_players[currentPlayerIndex].Name}'s turn...");
                     int aicomputerColumn = AIPlayer.GenerateMove(board);
 
-                    Console.WriteLine("AI Player has played.");
+                    Console.WriteLine($"AI Player {_players[currentPlayerIndex].Name} has played.");
 
                     if (PlayMove(aicomputerColumn))
                     {
